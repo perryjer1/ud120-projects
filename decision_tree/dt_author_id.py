@@ -26,6 +26,17 @@ features_train, features_test, labels_train, labels_test = preprocess()
 ### your code goes here ###
 
 
+from sklearn.tree import DecisionTreeClassifier as dct
+from sklearn.metrics import accuracy_score
+
+clf = dct(min_samples_split=40)
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
+acc = accuracy_score(labels_test, pred)
+
+print "acc", acc
+
+
 #########################################################
 
 
