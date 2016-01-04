@@ -33,9 +33,18 @@ plt.show()
 
 
 
+from sklearn.ensemble import AdaBoostClassifier as ada
+from sklearn.tree import DecisionTreeClassifier as dtc
+from sklearn.metrics import accuracy_score
+
+clf = ada(base_estimator=dtc(min_samples_split=50), n_estimators=50)
+clf = ada(learning_rate=0.25)
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
+acc = accuracy_score(labels_test, pred)
 
 
-
+print(acc)
 
 
 try:
